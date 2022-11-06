@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body class="bg-slate-200 font-sans">
+    <div class="main-div flex flex-col justify-center items-center w-screen h-screen">
+        <div class="headingr">
+            <h1 class="text-center text-5xl font-bold">Real Time character Counter</h1>
+            <p class="my-5 max-w-2xl text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint iste assumenda repellat eligendi! Ipsam voluptate voluptatem magnam at expedita.</p>
+        </div>
+        <div class="text-container relative">
+            <textarea onkeyup="countChar()" maxlength="150" id="textarea" class="textarea resize-none w-96  h-80 rounded-md p-2 shadow-xl focus:outline-none focus:border-solid focus:border focus:border-black" placeholder="Enter Your Text Here!"></textarea>
+            <button onclick="copyText()" class="btn absolute right-32 top-70 bg-emerald-600 rounded-md border-none py-1 px-4 text-white text-lg hover:bg-emerald-500">Copy Text</button>
+        </div>
+        <div class="counter-container flex space-x-28 my-3">
+            <p class="">Total character: <span id = "total-counter">0</span></p>
+            <p>Remaining character : <span id = "remaining-counter">150</span></p>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.querySelector('#textarea');
+        const totalCounter = document.querySelector('#total-counter');
+        const remainCounter = document.querySelector('#remaining-counter');
+        totalchar = 150;
+        let char;
+
+        function countChar() {
+            char = textarea.value.length;
+            totalCounter.innerText = char;
+            remainCounter.innerText = 150-char;
+
+        }
+
+        function copyText() {
+            textarea.select();
+            textarea.setSelectionRange(0,999);
+            navigator.clipboard.writeText(textarea.value);
+        }
+
+    </script>
+</body>
+</html>
